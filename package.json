@@ -1,0 +1,21 @@
+{
+  "name": "tdeec",
+  "version": "1.0.0",
+  "description": "TDEE calculator",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tdee",
+    "calculator",
+    "fitness"
+  ],
+  "author": "Filip Zakrocki",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.29.6"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.0"
+  }
+}
