@@ -2,10 +2,131 @@
 <html>
   <head>
     <title>Getting Started</title>
-    <script src="https://unpkg.com/lodash@4.16.6"></script>
-  </head>
-  <body>
-    <script type="text/javascript" src="js/main.js"></script>
-    </body>
 
-</html>
+    <meta charset="UTF-8">
+    <meta name="author" content="Filip Zakrocki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../assets/CSS/style.css" crossorigin="anonymous">
+
+
+
+
+</head>
+
+<body>
+
+    <!--
+        <section id="intro">
+            <h1>TDEE Calculator</h1>
+            <h4>Enter your daily caloric intake and your weight in the morning to calculate your TDEE over time</h4>
+        </section>
+-->
+
+    <section id="inputs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="inputsTitle">Initial Inputs</h4>
+                    <table>
+                        <tr>
+                            <td>Input start date to begin</td>
+                            <td><input type="date"></td>
+                        </tr>
+                        <tr>
+                            <td>Weights in KG or LB?</td>
+                            <td>
+                                <select>
+                                    <option>kg</option>
+                                    <option>lb</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Starting Weight</td>
+                            <td>
+                                <input type="number">
+                                <span>kg</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Goal Weight</td>
+                            <td>
+                                <input type="number">
+                                <span>kg</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Goal Weight loss per week</td>
+                            <td>
+                                <input type="number">
+                                <span>kg</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Target Daily Deficit</td>
+                            <td>
+                                <input type="number" disabled='true'>
+                                <span>Kcal.</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class='col-md-6'>
+                    <h4 class="inputsTitle">Current Body Stats</h4>
+                    <table>
+                        <tr>
+                            <td>Today's date is</td>
+                            <td><input disabled='true' type="date"></td>
+                        </tr>
+                        <tr>
+                            <td>Your current avg weight is</td>
+                            <td>
+                                <input disabled='true' type="number">
+                                <span>kg</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>You have lost</td>
+                            <td>
+                                <input disabled='true' type="number">
+                                <span>kg</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Your Current TDEE is</td>
+                            <td>~TDEE cal/day</td>
+                        </tr>
+                        <tr>
+                            <td>To reach your goal by</td>
+                            <td>date</td>
+                        </tr>
+                        <tr>
+                            <td>You will need to eat</td>
+                            <td>~cal/day</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="data">
+        
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body></html>
