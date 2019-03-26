@@ -29,10 +29,10 @@
             <div class="row">
                 <div class="col-6">
                     <h4 class="inputs-title">Initial Inputs</h4>
-                    <table>
+                    <table id='inputs-table'>
                         <tr>
                             <td>Input start date to begin</td>
-                            <td><input type="date"></td>
+                            <td><input class='date-initial-input' type="date"></td>
                         </tr>
                         <tr>
                             <td>Weights in KG or LB?</td>
@@ -46,21 +46,21 @@
                         <tr>
                             <td>Starting Weight</td>
                             <td>
-                                <input type="number">
+                                <input class='weight-initial-input' type="number">
                                 <span>kg</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Goal Weight</td>
                             <td>
-                                <input type="number">
+                                <input class='goal-initial-input' type="number">
                                 <span>kg</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Goal Weight loss per week</td>
                             <td>
-                                <input type="number">
+                                <input class='loss-initial-input' type="number">
                                 <span>kg</span>
                             </td>
                         </tr>
@@ -78,7 +78,7 @@
                     <table>
                         <tr>
                             <td>Today's date is</td>
-                            <td><input disabled='true' type="date"></td>
+                            <td><input class='date-current-input' disabled='true' type="date"></td>
                         </tr>
                         <tr>
                             <td>Your current avg weight is</td>
