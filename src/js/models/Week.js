@@ -1,9 +1,7 @@
-export default class Time {
+export default class Week {
     constructor(startDate) {
         this.startDate = startDate;
     }
     
-    weekCalc() {
-        return -1;
-    }
+    
 }
