@@ -54,6 +54,8 @@ const controlInputs = () => {
 //WEEKS LISTENERS
 inputElements.addWeekBtn.addEventListener('click', e => {
     weekView.addWeek();
+    inputElements.startDate.setAttribute('disabled', true);
+    inputElements.startWeight.setAttribute('disabled', true);
 })
 
 // WEEKS CONTROLLER
