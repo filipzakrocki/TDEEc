@@ -1,6 +1,6 @@
 import {inputElements} from './base';
 
-export const addWeek = () => {
+export const addWeek = (weekID) => {
     const weekTemplate = `<div class="row input-headers">
                 <div class='col-1'>
                     <div class='text-label'>Week</div>
@@ -48,3 +48,5 @@ export const addWeek = () => {
     
     inputElements.weeksTable.insertAdjacentHTML('beforeend', weekTemplate);
 }
+
+//function here to get inputs for kcal and 

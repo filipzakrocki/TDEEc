@@ -43,12 +43,16 @@ const controlInputs = () => {
     state.inputs = new Input(initialInputs.startDate, initialInputs.startWeight, initialInputs.weightGoal, initialInputs.weeklyLoss);
     
     inputView.setWeeksNeeded(state.inputs.weeksNeeded());
-    inputView.dailyKcalNeeded(state.inputs.caloriesNeeded());
+    inputView.dailyKcalDeficit(state.inputs.caloriesDeficitNeeded());
+    inputView.updateTDEE(state.inputs.TDEE);
+    inputView.avgWeight(state.inputs.avgWeight);
+    inputView.totalLoss(state.inputs.totalLoss());
+    inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
 }
 
 
 //WEEKS LISTENERS
-inputElements.addWeekBtn.addEventListener('click', e=> {
+inputElements.addWeekBtn.addEventListener('click', e => {
     weekView.addWeek();
 })
 

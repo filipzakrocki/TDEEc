@@ -17,16 +17,11 @@
 
 <body>
 
-    <!--
-        <section id="intro">
-            <h1>TDEE Calculator</h1>
-            <h4>Enter your daily caloric intake and your weight in the morning to calculate your TDEE over time</h4>
-        </section>
--->
+
 
     <section id="inputs">
         <div class="container">
-            <div class="row">
+            <div class="row inputs-wrapper">
                 <div class="col-6">
                     <h4 class="inputs-title">Initial Inputs</h4>
                     <table id='inputs-table'>
@@ -34,6 +29,7 @@
                             <td>Input start date to begin</td>
                             <td><input class='date-initial-input' type="date"></td>
                         </tr>
+<!--
                         <tr>
                             <td>Weights in KG or LB?</td>
                             <td>
@@ -43,6 +39,7 @@
                                 </select>
                             </td>
                         </tr>
+-->
                         <tr>
                             <td>Starting Weight</td>
                             <td>
@@ -83,28 +80,38 @@
                         <tr>
                             <td>Your current avg weight is</td>
                             <td>
-                                <input disabled='true' type="number">
+                                <input class='avg-weight' disabled='true' type="number">
                                 <span>kg</span>
                             </td>
                         </tr>
                         <tr>
                             <td>You have lost</td>
                             <td>
-                                <input disabled='true' type="number">
+                                <input class='total-loss' disabled='true' type="number">
                                 <span>kg</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Your Current TDEE is</td>
-                            <td>Your Current TDEE is</td>
+                            <td>
+                                <input class='current-TDEE' disabled='true' type="number">
+                                <span>kcal</span>
+                            </td>
                         </tr>
+                            
                         <tr>
                             <td>Weeks needed</td>
-                            <td class='weeks-needed'>date</td>
+                            <td>
+                                <input class='weeks-needed' disabled='true' type="number">
+                                <span>weeks</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>You will need to eat</td>
-                            <td>~cal/day</td>
+                            <td>
+                                <input class='total-kcal-day' disabled='true' type="number">
+                                <span>kcal/day</span>
+                            </td>
                         </tr>
                     </table>
                 </div>
