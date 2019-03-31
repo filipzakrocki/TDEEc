@@ -56,7 +56,7 @@ const controlInputs = () => {
 //WEEKS LISTENERS
 inputElements.addWeekBtn.addEventListener('click', e => {
     weekView.addWeek(state.weekNo);
-    state.weekNo += 1;
+    
     inputElements.startDate.setAttribute('disabled', true);
     inputElements.startWeight.setAttribute('disabled', true);
 })
@@ -70,8 +70,8 @@ inputElements.weeksTable.addEventListener('change', e => {
 // WEEKS CONTROLLER
 
 const weeksController = () => {
-    
-    const weekData = weekView.collectCells();
+    console.log(state.weekNo);
+    const weekData = weekView.collectCells(state.weekNo);
     console.log(weekData);
     
     // add a week to date
@@ -94,6 +94,6 @@ const weeksController = () => {
     
     // display actual TDEE in inputs
     
-    
+//    state.weekNo += 1;
     
 }

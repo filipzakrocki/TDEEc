@@ -51,17 +51,19 @@ export const addWeek = (weekID) => {
 
 
 //incorporate the week?
-export const collectCells = () => {
+export const collectCells = (week) => {
+    
     let cells = {
         kg: [],
         kcal: []
     };
     
-    const kg =  inputElements.kgCells;
+    const kg = document.querySelectorAll(`.week-${week} .kg`);
     
-    kg.forEach( e => {
-        console.log(e);
-        console.log('kek')
+    kg.forEach(e => {
+        if (e.value) {
+            cells.kg.push(parseInt(e.value));
+        }
     })
     
     return cells;
