@@ -1,11 +1,11 @@
 export default class Inputs {
-    constructor(startDate, startWeight, weightGoal, weeklyLoss) {
-        this.startDate = startDate;
-        this.startWeight = startWeight;
-        this.weightGoal = weightGoal;
-        this.weeklyLoss = weeklyLoss;
-        this.TDEE = startWeight * 33;
-        this.avgWeight = startWeight;
+    constructor(input) {
+        this.startDate = input.startDate;
+        this.startWeight = input.startWeight;
+        this.weightGoal = input.weightGoal;
+        this.weeklyLoss = input.weeklyLoss;
+        this.TDEE = input.startWeight * 33;
+        this.avgWeight = input.startWeight;
     }
 
     weeksNeeded() {

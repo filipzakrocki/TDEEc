@@ -16,4 +16,7 @@ export const inputElements = {
     //weeks tables
     weeksTable: document.querySelector('.weeks-table'),
     addWeekBtn: document.querySelector('.add-week-btn'),
+    //weeks cells
+    kgCells: document.querySelectorAll('.kg'),
+    kcalCells: document.querySelectorAll('.kcal')
 }
