@@ -63,7 +63,7 @@ inputElements.addWeekBtn.addEventListener('click', e => {
 
 //CELL LISTENERS
 inputElements.weeksTable.addEventListener('change', e => {
-    e.closest();
+
     weeksController();
 })
 
