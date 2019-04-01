@@ -32,7 +32,7 @@ window.addEventListener('load', () => {
 // INITIAL INPUTS EVENT LISTENER
 
 inputElements.inputs.addEventListener('change', e=> {
-    console.log('change input listener');
+    console.log(state);
     controlInputs();
 })
 

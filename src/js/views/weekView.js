@@ -4,7 +4,7 @@ export const addWeek = (weekID) => {
     const weekTemplate = `<div data-id='${weekID}' class="row input-headers week-${weekID}">
                 <div class='col-1'>
                     <div class='text-label'>Week ${weekID}</div>
-                    <div class='text-label weekNumber'>date</div>
+                    <div class='text-label weekNumber'>${generateDate(inputElements.startDate.value, weekID)}</div>
                 </div>
                 <div class='col-1'>
                     <div class='text-label'>Kg</div>
@@ -77,3 +77,17 @@ export const collectCells = (week) => {
 }
 
 //function here to get inputs for kcal and 
+
+const generateDate = (date, weeksToAdd) => {
+    let startDate, days, months, years, daysToAdd, outputDate;
+    
+    startDate = new Date(date);
+    days = startDate.getDate();
+    months = startDate.getMonth();
+    years = startDate.getYear() + 1900;
+    daysToAdd = (weeksToAdd * 7) - 7;
+    
+    outputDate = new Date(years, months, days + daysToAdd);
+  
+    return outputDate.toDateString();
+}
