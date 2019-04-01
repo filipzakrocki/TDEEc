@@ -13,7 +13,7 @@ import * as inputView from './views/inputView';
 import * as weekView from './views/weekView';
 
 const state = {
-    weekNo: 1
+    weekNo: 0
 };
 
 
@@ -55,24 +55,47 @@ const controlInputs = () => {
 
 //WEEKS LISTENERS
 inputElements.addWeekBtn.addEventListener('click', e => {
+    state.weekNo += 1;
     weekView.addWeek(state.weekNo);
-    
     inputElements.startDate.setAttribute('disabled', true);
     inputElements.startWeight.setAttribute('disabled', true);
 })
 
 //CELL LISTENERS
 inputElements.weeksTable.addEventListener('change', e => {
-
-    weeksController();
+    let weekNumber = e.target.parentNode.parentNode.parentNode.dataset.id;
+    weeksController(weekNumber);
+    
+    if (e.target.matches('.kg')) {
+        
+        // update the avg kg
+        
+        // update the kg loss
+        
+        // update the TDEE
+        
+    } else if (e.target.matches('.kcal')) {
+        console.log('kcal change');
+        
+        // update the avg kcal
+        
+        // update the TDEE
+        
+    }
+    
 })
 
 // WEEKS CONTROLLER
 
-const weeksController = () => {
-    console.log(state.weekNo);
-    const weekData = weekView.collectCells(state.weekNo);
-    console.log(weekData);
+const weeksController = (dataID) => {
+    
+    // DATASET IMPLEMENTATION?!
+    
+    let weekLabel =  'week_' + dataID;
+    
+    const weekData = weekView.collectCells(dataID);
+    state[weekLabel] = new Week(weekData, dataID);
+    console.log(state[weekLabel].getAvgKg(state[weekLabel].cells.kg));
     
     // add a week to date
     
