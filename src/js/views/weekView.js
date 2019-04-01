@@ -89,5 +89,5 @@ const generateDate = (date, weeksToAdd) => {
     
     outputDate = new Date(years, months, days + daysToAdd);
   
-    return outputDate.toDateString();
+    return outputDate.toDateString().slice(4);
 }
