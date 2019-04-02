@@ -1,0 +1,8 @@
+Must have:
+work on style
+
+SHould have:
+Adjust the app to calculate for bulking as well
+
+Nice to have:
+kg/lb implementation

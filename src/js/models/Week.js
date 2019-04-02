@@ -6,7 +6,7 @@ export default class Week {
     
     
     //kg or kcal
-    getAvgKg(arr) {
+    getAvgKg() {
         let sum = 0;
         this.cells.kg.forEach(e => sum += e);
         let avg = sum / this.cells.kg.length;
@@ -14,16 +14,16 @@ export default class Week {
         return this.avgKg;
     }
     
-    getAvgKcal(arr) {
+    getAvgKcal() {
         let sum = 0;
         this.cells.kcal.forEach(e => sum += e);
         let avg = sum / this.cells.kcal.length;
         this.avgKcal = Math.floor(avg);
-        return this.avgKg;
+        return this.avgKcal;
     }
     
-    calcLoss(prevWeight) {
-        this.weeklyLoss = prevWeight - this.kg.avg;
+    calcChange(prevWeight) {
+        this.weeklyLoss = prevWeight - this.avgKg;
     }
     
     

@@ -19,4 +19,5 @@ export const inputElements = {
     //weeks cells
     kgCells: document.querySelectorAll('.kg'),
     kcalCells: document.querySelectorAll('.kcal')
+    
 }
