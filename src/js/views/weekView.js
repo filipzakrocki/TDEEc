@@ -105,3 +105,8 @@ export const disableWeek = (week) => {
     }
     
 }
+
+export const updateAverages = (week, avgKg, avgKcal) => {
+    document.querySelector(`.week-${week} .avg-kg`).innerHTML = avgKg;
+    document.querySelector(`.week-${week} .avg-kcal`).innerHTML = avgKcal;
+}

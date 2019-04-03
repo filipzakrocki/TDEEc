@@ -124,8 +124,7 @@ const weeksController = (dataID) => {
     const weekAvgKg = state[weekLabel].getAvgKg();
     const weekAvgKcal = state[weekLabel].getAvgKcal();
     // display average
-    document.querySelector(`.week-${dataID} .avg-kg`).innerHTML = weekAvgKg;
-    document.querySelector(`.week-${dataID} .avg-kcal`).innerHTML = weekAvgKcal;
+    weekView.updateAverages(dataID, weekAvgKg, weekAvgKcal);
 
     // calculate the weekly difference with week before
 
