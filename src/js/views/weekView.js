@@ -44,8 +44,8 @@ export const addWeek = (weekID) => {
                     <div class='text-label avg-kg'>AVG Kg</div>
                     <div class='text-label avg-kcal'>AVG kcal</div>
                 </div>
-                <div class='col-1'>Kg ∆</div>
-                <div class='col-1 text-label'> TDEE</div>
+                <div class='col-1 delta'>Kg ∆</div>
+                <div class='col-1 text-label tdee'> TDEE</div>
             </div>`;
 
     inputElements.weeksTable.insertAdjacentHTML('beforeend', weekTemplate);
@@ -65,13 +65,13 @@ export const collectCells = (week) => {
 
     kg.forEach(e => {
         if (e.value) {
-            cells.kg.push(parseInt(e.value));
+            cells.kg.push(parseFloat(e.value));
         }
     })
 
     kcal.forEach(e => {
         if (e.value) {
-            cells.kcal.push(parseInt(e.value));
+            cells.kcal.push(parseFloat(e.value));
         }
     })
 
@@ -80,9 +80,6 @@ export const collectCells = (week) => {
 
 const generateDate = (date, weeksToAdd) => {
     let startDate, days, months, years, daysToAdd, outputDate;
-
-    console.log(date);
-
 
     startDate = new Date(date);
     days = startDate.getDate();
@@ -97,16 +94,19 @@ const generateDate = (date, weeksToAdd) => {
 }
 
 export const disableWeek = (week) => {
-    console.log(week);
     if (week > 0) {
-        console.log(document.querySelectorAll(`.week-${week} input`));
+
         const allInputs = document.querySelectorAll(`.week-${week} input`);
         allInputs.forEach(e => e.disabled = true);
     }
-    
+
 }
 
 export const updateAverages = (week, avgKg, avgKcal) => {
-    document.querySelector(`.week-${week} .avg-kg`).innerHTML = avgKg;
-    document.querySelector(`.week-${week} .avg-kcal`).innerHTML = avgKcal;
+    document.querySelector(`.week-${week} .avg-kg`).innerHTML = avgKg.toFixed(2);
+    document.querySelector(`.week-${week} .avg-kcal`).innerHTML = Math.floor(avgKcal);
+}
+
+export const updateCalcChange = (week, weeklyLoss) => {
+    document.querySelector(`.week-${week} .delta`).innerHTML = weeklyLoss.toFixed(2);
 }

@@ -40,7 +40,7 @@ window.addEventListener('load', () => {
 // INITIAL INPUTS EVENT LISTENER
 
 inputElements.inputs.addEventListener('change', e => {
-    console.log(state);
+
     controlInputs();
 })
 
@@ -48,7 +48,7 @@ inputElements.inputs.addEventListener('change', e => {
 
 const controlInputs = () => {
     const initialInputs = inputView.getInitialInput();
-    console.log(initialInputs);
+
 
     state.inputs = new Input(initialInputs);
 
@@ -93,7 +93,6 @@ inputElements.weeksTable.addEventListener('change', e => {
         // update the TDEE
 
     } else if (e.target.matches('.kcal')) {
-        console.log('kcal change');
 
         // update the avg kcal
 
@@ -108,7 +107,9 @@ inputElements.weeksTable.addEventListener('change', e => {
 const weeksController = (dataID) => {
 
     // create a new name for the model for the week
-    let weekLabel = 'week_' + dataID;
+    const weekLabel = 'week_' + dataID;
+    
+    console.log('week = ' + dataID);
     
     // get cells for kg and kcal
     const weekData = weekView.collectCells(dataID);
@@ -119,14 +120,21 @@ const weeksController = (dataID) => {
     
 
     // calculate averages for kg and kcal
-    console.log(state[weekLabel].getAvgKg(state[weekLabel].cells.kg));
+    
     
     const weekAvgKg = state[weekLabel].getAvgKg();
     const weekAvgKcal = state[weekLabel].getAvgKcal();
     // display average
     weekView.updateAverages(dataID, weekAvgKg, weekAvgKcal);
 
-    // calculate the weekly difference with week before
+    // calculate the weekly difference with week before, if its the first week compare with startWeight
+    const prevWeek = 'week_' + (dataID-1);
+    const previousWeekAverage = (state[prevWeek]) ? state[prevWeek].avgKg : state.inputs.startWeight;
+    // calculate the average loss
+    const weeklyChange = state[weekLabel].calcChange(previousWeekAverage);
+    //display it on UI
+    weekView.updateCalcChange(dataID, weeklyChange);
+    
 
     // calculate avg weight in inputs
 
