@@ -110,3 +110,8 @@ export const updateAverages = (week, avgKg, avgKcal) => {
 export const updateCalcChange = (week, weeklyLoss) => {
     document.querySelector(`.week-${week} .delta`).innerHTML = weeklyLoss.toFixed(2);
 }
+
+export const updateTdee = (week, tdee) => {
+    document.querySelector(`.week-${week} .tdee`).innerHTML = Math.floor(tdee);
+    inputElements.currentTDEE.value = Math.floor(tdee);
+}

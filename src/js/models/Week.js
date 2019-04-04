@@ -3,8 +3,8 @@ export default class Week {
         this.weekNo = weekNo;
         this.cells = cells;
     }
-    
-    
+
+
     //kg or kcal
     getAvgKg() {
         let sum = 0;
@@ -14,7 +14,7 @@ export default class Week {
         this.avgKg = avg;
         return this.avgKg;
     }
-    
+
     getAvgKcal() {
         let sum = 0;
         this.cells.kcal.forEach(e => sum += e);
@@ -22,11 +22,26 @@ export default class Week {
         this.avgKcal = avg;
         return this.avgKcal;
     }
-    
+
     calcChange(prevWeight) {
         this.weeklyLoss = this.avgKg - prevWeight;
         return this.weeklyLoss
     }
     
-    
+    calcTdee() {
+        const newKcal = (Math.abs(this.weeklyLoss) * 7700) / 7; // 7700 kcal per 1 kg per day
+        this.tdee = newKcal + this.avgKcal;
+        return this.tdee;
+    }
+
+
+    //calculating tdee
+    //TDEE = 7700kcal => 1 kg
+    //
+    //DEFICIT OF 0.7 x 7700 = 5390
+    //
+    //daily deficit = 5390/7
+    //
+    //new TDEE = avgkcal + daily deficit 7700
+    //    
 }

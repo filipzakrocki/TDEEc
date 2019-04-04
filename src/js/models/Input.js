@@ -4,7 +4,6 @@ export default class Inputs {
         this.startWeight = input.startWeight;
         this.weightGoal = input.weightGoal;
         this.weeklyLoss = input.weeklyLoss;
-        this.TDEE = input.startWeight * 33;
         this.avgWeight = input.startWeight;
     }
 
@@ -31,7 +30,12 @@ export default class Inputs {
     }
 
     totalCaloriesNeeded() {
-        this.totalTDEE = this.TDEE - this.dailyKcalDeficit;
+        this.totalTDEE = this.tdee - this.dailyKcalDeficit;
         return this.totalTDEE;
+    }
+    
+    setStartTdee() {
+        this.tdee = this.startWeight * 33;
+        return this.tdee
     }
 }

@@ -54,7 +54,7 @@ const controlInputs = () => {
 
     inputView.setWeeksNeeded(state.inputs.weeksNeeded());
     inputView.dailyKcalDeficit(state.inputs.caloriesDeficitNeeded());
-    inputView.updateTDEE(state.inputs.TDEE);
+    inputView.updateTDEE(state.inputs.setStartTdee());
     inputView.avgWeight(state.inputs.avgWeight);
     inputView.totalLoss(state.inputs.totalLoss());
     inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
@@ -83,23 +83,7 @@ inputElements.addWeekBtn.addEventListener('click', e => {
 inputElements.weeksTable.addEventListener('change', e => {
     let weekNumber = e.target.parentNode.parentNode.parentNode.dataset.id;
     weeksController(weekNumber);
-
-    if (e.target.matches('.kg')) {
-
-        // update the avg kg
-
-        // update the kg loss
-
-        // update the TDEE
-
-    } else if (e.target.matches('.kcal')) {
-
-        // update the avg kcal
-
-        // update the TDEE
-
-    }
-
+    console.table(state);
 })
 
 // WEEKS CONTROLLER
@@ -108,7 +92,6 @@ const weeksController = (dataID) => {
 
     // create a new name for the model for the week
     const weekLabel = 'week_' + dataID;
-    
     console.log('week = ' + dataID);
     
     // get cells for kg and kcal
@@ -116,36 +99,37 @@ const weeksController = (dataID) => {
     //create a new week in the state -> state.week_[number];
     state[weekLabel] = new Week(weekData, dataID);
     
-
-    
-
     // calculate averages for kg and kcal
-    
-    
     const weekAvgKg = state[weekLabel].getAvgKg();
     const weekAvgKcal = state[weekLabel].getAvgKcal();
     // display average
     weekView.updateAverages(dataID, weekAvgKg, weekAvgKcal);
+    // calculate and update avgKg in inputs
+    state.inputs.avgWeight = weekAvgKg;
+    inputView.avgWeight(weekAvgKg.toFixed(2));
 
     // calculate the weekly difference with week before, if its the first week compare with startWeight
     const prevWeek = 'week_' + (dataID-1);
     const previousWeekAverage = (state[prevWeek]) ? state[prevWeek].avgKg : state.inputs.startWeight;
     // calculate the average loss
     const weeklyChange = state[weekLabel].calcChange(previousWeekAverage);
+    state.inputs.totalLoss = parseFloat(state.inputs.startWeight) - state.inputs.avgWeight;
+    inputElements.totalLoss.value = state.inputs.totalLoss.toFixed(2);
     //display it on UI
     weekView.updateCalcChange(dataID, weeklyChange);
     
-
-    // calculate avg weight in inputs
-
-    // display difference in weeks row
-
     // calcualte TDEE
-
+    const tdee = state[weekLabel].calcTdee();
     // display TDEE
+    weekView.updateTdee(dataID, tdee);
+    
+    // update and display actual TDEE in inputs
+    state.inputs.tdee = tdee;
 
-    // display actual TDEE in inputs
+    //recalculate week
+    
+    //recalculate daily kaloric needs
 
-    //    state.weekNo += 1;
+    
 
 }
