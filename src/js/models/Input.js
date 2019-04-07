@@ -7,7 +7,7 @@ export default class Inputs {
         this.avgWeight = input.startWeight;
     }
 
-    weeksNeeded() {
+    getWeeksNeeded() {
         //NEEDS TO BE AN AVERAGE WEIGHT
         if (this.weeklyLoss) {
             const difference = (this.avgWeight - this.weightGoal);
@@ -31,7 +31,7 @@ export default class Inputs {
 
     totalCaloriesNeeded() {
         this.totalTDEE = this.tdee - this.dailyKcalDeficit;
-        return this.totalTDEE;
+        return Math.floor(this.totalTDEE);
     }
     
     setStartTdee() {

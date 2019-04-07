@@ -43,8 +43,9 @@ export const dailyKcalNeeded = (kcalNeeded) => {
     inputElements.kcalNeeded.value = kcalFormatted;
 }
 
-export const avgWeight = (avgWeight) => {
-    inputElements.avgWeight.value = avgWeight;
+export const avgWeight = (avgWght) => {
+    avgWght = avgWght;
+    inputElements.avgWeight.value = avgWght;
 }
 
 export const updateTDEE = (avgTDEE) => {
@@ -52,6 +53,7 @@ export const updateTDEE = (avgTDEE) => {
 }
 
 export const totalLoss = (totalLoss) => {
+    totalLoss = totalLoss.toFixed(2);
     inputElements.totalLoss.value = totalLoss;
 }
 
