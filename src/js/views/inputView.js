@@ -44,12 +44,12 @@ export const dailyKcalNeeded = (kcalNeeded) => {
 }
 
 export const avgWeight = (avgWght) => {
-    avgWght = avgWght;
-    inputElements.avgWeight.value = avgWght;
+    const avgWt = avgWght;
+    inputElements.avgWeight.value = avgWt;
 }
 
 export const updateTDEE = (avgTDEE) => {
-    inputElements.currentTDEE.value = avgTDEE;
+    inputElements.currentTDEE.value = Math.floor(avgTDEE);
 }
 
 export const totalLoss = (totalLoss) => {
@@ -59,6 +59,6 @@ export const totalLoss = (totalLoss) => {
 
 export const updateDailyKcal = (totalTDEE) => {
     if (totalTDEE) {
-        inputElements.totalKcalDay.value = totalTDEE;
+        inputElements.totalKcalDay.value = Math.floor(totalTDEE);
     }
 }
