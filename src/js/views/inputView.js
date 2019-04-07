@@ -67,8 +67,8 @@ export const setDays = (startDate) => {
     let date = new Date(startDate).getDay();
 
     const weekdays = inputElements.weekDays;
-    const days = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.',
-                 'Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.']
+    const days = ['Sun.', 'Mon.', 'Tues.', 'Wed.', 'Thurs.', 'Fri.', 'Sat.',
+                 'Sun.', 'Mon.', 'Tues.', 'Wed.', 'Thurs.', 'Fri.', 'Sat.']
     weekdays.forEach((e = date) => {
         e.innerHTML = days[date];
         date++;

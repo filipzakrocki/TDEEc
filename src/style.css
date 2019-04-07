@@ -108,7 +108,10 @@ input[type='number'] {
 
 div.text-label {
     vertical-align: middle;
+}
 
+div.weekNumber {
+    font-size: 16px;
 }
 
 .add-week-btn {
