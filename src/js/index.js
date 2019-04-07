@@ -42,6 +42,9 @@ window.addEventListener('load', () => {
 inputElements.inputs.addEventListener('change', e => {
     //listen for inputs in the top panel and add them to the state.inputs
     controlInputs();
+    if ((state.weekNo !== 0) && (e.target.matches('.loss-initial-input')) ) {
+        weeksController(state.weekNo);
+    }
 })
 
 // INPUT CONTROLLER
@@ -55,13 +58,12 @@ const controlInputs = () => {
 
     // update the UI
 
-    inputView.setWeeksNeeded(state.inputs.getWeeksNeeded());
-    inputView.dailyKcalDeficit(state.inputs.caloriesDeficitNeeded());
-    inputView.updateTDEE(state.inputs.setStartTdee());
-    inputView.avgWeight(state.inputs.avgWeight);
-    inputView.totalLoss(state.inputs.totalLoss());
-    inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
-
+        inputView.setWeeksNeeded(state.inputs.getWeeksNeeded());
+        inputView.dailyKcalDeficit(state.inputs.caloriesDeficitNeeded());
+        inputView.updateTDEE(state.inputs.setStartTdee());
+        inputView.avgWeight(state.inputs.avgWeight);
+        inputView.totalLoss(state.inputs.totalLoss());
+        inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
 
 }
 
