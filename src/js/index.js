@@ -98,6 +98,13 @@ inputElements.weeksTable.addEventListener('change', e => {
     console.table(state);
 })
 
+window.addEventListener('keypress', e => {
+    if (e.which === 13 && state.weekNo !== 0) {
+        weeksController(state.weekNo);
+        console.log('enter pressed');
+    }
+})
+
 // WEEKS CONTROLLER
 
 const weeksController = (dataID) => {

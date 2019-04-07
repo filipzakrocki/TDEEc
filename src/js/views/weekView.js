@@ -103,8 +103,13 @@ export const disableWeek = (week) => {
 }
 
 export const updateAverages = (week, avgKg, avgKcal) => {
-    document.querySelector(`.week-${week} .avg-kg`).innerHTML = avgKg.toFixed(2);
-    document.querySelector(`.week-${week} .avg-kcal`).innerHTML = Math.floor(avgKcal);
+    if (avgKg) {
+        document.querySelector(`.week-${week} .avg-kg`).innerHTML = avgKg.toFixed(2);
+    }
+    if (avgKcal) {
+        document.querySelector(`.week-${week} .avg-kcal`).innerHTML = Math.floor(avgKcal);
+    }
+
 }
 
 export const updateCalcChange = (week, weeklyLoss) => {
@@ -112,6 +117,10 @@ export const updateCalcChange = (week, weeklyLoss) => {
 }
 
 export const updateTdee = (week, tdee) => {
-    document.querySelector(`.week-${week} .tdee`).innerHTML = Math.floor(tdee);
-    inputElements.currentTDEE.value = Math.floor(tdee);
+    document.querySelector(`.week-${week} .tdee`).innerHTML = '...';
+    if (tdee) {
+        document.querySelector(`.week-${week} .tdee`).innerHTML = Math.floor(tdee);
+        inputElements.currentTDEE.value = Math.floor(tdee);
+    }
+
 }
