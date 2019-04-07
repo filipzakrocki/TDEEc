@@ -38,4 +38,7 @@ export default class Inputs {
         this.tdee = this.startWeight * 33;
         return this.tdee
     }
+    
+    
+    
 }

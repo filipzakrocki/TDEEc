@@ -71,6 +71,7 @@ const controlInputs = () => {
 //WEEKS LISTENERS
 inputElements.addWeekBtn.addEventListener('click', e => {
     weekView.disableWeek(state.weekNo);
+    inputView.setDays(state.inputs.startDate);
     try {
         if (state.inputs.startDate && state.inputs.startWeight) {
             state.weekNo += 1;

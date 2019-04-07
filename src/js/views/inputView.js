@@ -62,3 +62,17 @@ export const updateDailyKcal = (totalTDEE) => {
         inputElements.totalKcalDay.value = Math.floor(totalTDEE);
     }
 }
+
+export const setDays = (startDate) => {
+    let date = new Date(startDate).getDay();
+
+    const weekdays = inputElements.weekDays;
+    const days = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.',
+                 'Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.']
+    weekdays.forEach((e = date) => {
+        e.innerHTML = days[date];
+        date++;
+    })
+}
+
+
