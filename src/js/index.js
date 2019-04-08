@@ -15,7 +15,7 @@ import Week from './models/Week';
 import * as inputView from './views/inputView';
 import * as weekView from './views/weekView';
 
-const state = {
+let state = {
     weekNo: 0
 };
 
@@ -25,7 +25,16 @@ const state = {
 
 // ONLOAD LISTENERS
 window.addEventListener('load', () => {
-    console.log('on load listener')
+
+
+    // create blank object
+    //    state.inputs = new Input(inputView.getInitialInput());
+    //    
+    //    // read local storage
+    //    state.inputs.readStorage();
+
+    readStorage();
+
     //Set Current Date
     const currentDate = inputView.setCurrentDate();
     inputElements.currentDate.value = currentDate;
@@ -34,6 +43,7 @@ window.addEventListener('load', () => {
         inputElements.startDate.value = currentDate;
     }
     // get Local Storage
+
 })
 
 
@@ -42,7 +52,7 @@ window.addEventListener('load', () => {
 inputElements.inputs.addEventListener('change', e => {
     //listen for inputs in the top panel and add them to the state.inputs
     controlInputs();
-    if ((state.weekNo !== 0) && (e.target.matches('.loss-initial-input')) ) {
+    if ((state.weekNo !== 0) && (e.target.matches('.loss-initial-input'))) {
         weeksController(state.weekNo);
     }
 })
@@ -51,19 +61,23 @@ inputElements.inputs.addEventListener('change', e => {
 
 const controlInputs = () => {
     //gather all the info from top panel
-    const initialInputs = inputView.getInitialInput();
+    if (state.weekNo === 0) {
+        const initialInputs = inputView.getInitialInput();
+        state.inputs = new Input(initialInputs);
+    }
+
 
     // add it to state.inputs
-    state.inputs = new Input(initialInputs);
+
 
     // update the UI
 
-        inputView.setWeeksNeeded(state.inputs.getWeeksNeeded());
-        inputView.dailyKcalDeficit(state.inputs.caloriesDeficitNeeded());
-        inputView.updateTDEE(state.inputs.setStartTdee());
-        inputView.avgWeight(state.inputs.avgWeight);
-        inputView.totalLoss(state.inputs.totalLoss());
-        inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
+    inputView.setWeeksNeeded(state.inputs.getWeeksNeeded());
+    inputView.dailyKcalDeficit(state.inputs.caloriesDeficitNeeded());
+    inputView.updateTDEE(state.inputs.setStartTdee());
+    inputView.avgWeight(state.inputs.avgWeight);
+    inputView.totalLoss(state.inputs.totalLoss());
+    inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
 
 }
 
@@ -101,7 +115,6 @@ inputElements.weeksTable.addEventListener('change', e => {
 window.addEventListener('keypress', e => {
     if (e.which === 13 && state.weekNo !== 0) {
         weeksController(state.weekNo);
-        console.log('enter pressed');
     }
 })
 
@@ -112,7 +125,6 @@ const weeksController = (dataID) => {
     // create a new name for the model for the week
     const weekLabel = 'week_' + dataID;
     const prevWeek = 'week_' + (dataID - 1);
-    console.log('week = ' + dataID);
 
     // get cells for kg and kcal
     const weekData = weekView.collectCells(dataID);
@@ -125,7 +137,7 @@ const weeksController = (dataID) => {
     // display average
     weekView.updateAverages(dataID, weekAvgKg, weekAvgKcal);
     // calculate and update avgKg in inputs
-    state.inputs.avgWeight = weekAvgKg.toFixed(2);
+    state.inputs.avgWeight = weekAvgKg;
     inputView.avgWeight(weekAvgKg);
 
     // calculate the weekly difference with week before, if its the first week compare with startWeight
@@ -150,12 +162,65 @@ const weeksController = (dataID) => {
     // update and display actual averaged TDEE in inputs
     state.inputs.tdee = tdee;
 
+    //recalculate and display daily kaloric needs
     //recalculate and display weeks
+    // ONLY IF OBJECT IS CREATED
+    
+    // PROBLEM PROBLEM PROBLEM
+
+
+    inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
     inputView.setWeeksNeeded(state.inputs.getWeeksNeeded());
 
-    //recalculate and display daily kaloric needs
-    inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
 
 
 
+
+    //LocalStorage setting
+    persistData();
+
+}
+
+// LocalStorage functions
+
+//SAVE
+
+function persistData() {
+    console.log('INPUTS SAVED');
+    localStorage.setItem('state', JSON.stringify(state));
+}
+
+//LOAD
+
+function readStorage() {
+    
+    //assign stored data to variable
+    const storage = JSON.parse(localStorage.getItem('state'));
+
+    //restore from storage and set as state
+    if (storage) {
+        const init = new Input(storage.inputs);
+        state = storage;
+        console.log(state);
+        //update the inputs
+        
+        inputView.restoreInput(state.inputs);
+
+        //update the weeks one by one
+        const storArr = Object.keys(state).map(i => state[i]);
+        storArr.forEach(e => {
+            if (e.weekNo) {
+                weekView.restoreWeek(e);
+            }
+        })
+
+        //disabling inputs
+        inputElements.startDate.setAttribute('disabled', true);
+        inputElements.startWeight.setAttribute('disabled', true);
+
+        console.log('LocalStorageLoaded')
+
+    } else {
+        console.log('LocalStorageAbsent')
+    }
 }

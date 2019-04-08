@@ -124,3 +124,54 @@ export const updateTdee = (week, tdee) => {
     }
 
 }
+
+export const restoreWeek = (weekObj) => {
+    const weekTemplate = `<div data-id='${weekObj.weekNo}' class="row input-headers week-${weekObj.weekNo}">
+                <div class='col-1'>
+                    <div class='text-label'>Week ${weekObj.weekNo}</div>
+                    <div class='text-label weekNumber'>${generateDate(inputElements.startDate.value, weekObj.weekNo)}</div>
+                </div>
+                <div class='col-1'>
+                    <div class='text-label'>kg</div>
+                    <div class='text-label'>kcal</div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[0] ? weekObj.cells.kg[0] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[0] ? weekObj.cells.kcal[0] : ''}'></div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[1] ? weekObj.cells.kg[1] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[1] ? weekObj.cells.kcal[1] : ''}'></div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[2] ? weekObj.cells.kg[2] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[2] ? weekObj.cells.kcal[2] : ''}'></div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[3] ? weekObj.cells.kg[3] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[3] ? weekObj.cells.kcal[3] : ''}'></div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[4] ? weekObj.cells.kg[4] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[4] ? weekObj.cells.kcal[4] : ''}'></div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[5] ? weekObj.cells.kg[5] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[5] ? weekObj.cells.kcal[5] : ''}'></div>
+                </div>
+                <div class='col-1'>
+                    <div><input class='kg' type="number" value='${weekObj.cells.kg[6] ? weekObj.cells.kg[6] : ''}'> </div>
+                    <div><input class='kcal' type="number" value='${weekObj.cells.kcal[6] ? weekObj.cells.kcal[6] : ''}'></div>
+                </div>
+                <div class='col-1 avg'>
+                    <div class='text-label avg-kg'>${weekObj.avgKg.toFixed(2)}</div>
+                    <div class='text-label avg-kcal'>${Math.floor(weekObj.avgKcal)}</div>
+                </div>
+                <div class='col-1 delta'>${weekObj.weeklyLoss.toFixed(2)}</div>
+                <div class='col-1 text-label tdee'> ${Math.floor(weekObj.tdee)}</div>
+            </div>`;
+
+    inputElements.weeksTable.insertAdjacentHTML('beforeend', weekTemplate);
+}
+
+

@@ -44,7 +44,7 @@ export const dailyKcalNeeded = (kcalNeeded) => {
 }
 
 export const avgWeight = (avgWght) => {
-    const avgWt = avgWght;
+    const avgWt = parseFloat(avgWght).toFixed(2);
     inputElements.avgWeight.value = avgWt;
 }
 
@@ -63,6 +63,22 @@ export const updateDailyKcal = (totalTDEE) => {
     }
 }
 
+export const setStartDate = (startDate) => {
+    inputElements.startDate.value = startDate;
+}
+
+export const setStartWeight = (startWeight) => {
+    inputElements.startWeight.value = startWeight;
+}
+
+export const setGoalWeight = (goal) => {
+    inputElements.weightGoal.value = goal;
+}
+
+export const setGoalLoss = (goal) => {
+    inputElements.weeklyLoss.value = goal;
+}
+
 export const setDays = (startDate) => {
     let date = new Date(startDate).getDay();
 
@@ -73,6 +89,19 @@ export const setDays = (startDate) => {
         e.innerHTML = days[date];
         date++;
     })
+}
+
+export const restoreInput = (stateInputs) => {
+        setWeeksNeeded(stateInputs.weeksNeeded);
+        dailyKcalDeficit(stateInputs.dailyKcalDeficit);
+        updateTDEE(stateInputs.tdee);
+        avgWeight(stateInputs.avgWeight);
+        totalLoss(stateInputs.totalLoss);
+        updateDailyKcal(stateInputs.totalTDEE);
+        setStartDate(stateInputs.startDate);
+        setStartWeight(stateInputs.startWeight);
+        setGoalWeight(stateInputs.weightGoal);
+        setGoalLoss(stateInputs.weeklyLoss);
 }
 
 

@@ -33,15 +33,5 @@ export default class Week {
         this.tdee = newKcal + this.avgKcal;
         return this.tdee;
     }
-
-
-    //calculating tdee
-    //TDEE = 7700kcal => 1 kg
-    //
-    //DEFICIT OF 0.7 x 7700 = 5390
-    //
-    //daily deficit = 5390/7
-    //
-    //new TDEE = avgkcal + daily deficit 7700
-    //    
+    
 }
