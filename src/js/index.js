@@ -3,8 +3,7 @@ import "../style.css";
 
 // UI selectors
 import {
-    inputElements,
-    weekElements
+    inputElements
 } from './views/base';
 
 // models
@@ -16,7 +15,6 @@ import * as inputView from './views/inputView';
 import * as weekView from './views/weekView';
 
 let state = {
-    weekNo: 0
 };
 
 
@@ -25,8 +23,9 @@ let state = {
 
 // ONLOAD LISTENERS
 window.addEventListener('load', () => {
-
-
+    
+    
+    state.weekNo = 0;
     // create blank object
     //    state.inputs = new Input(inputView.getInitialInput());
     //    
@@ -131,6 +130,7 @@ const weeksController = (dataID) => {
     const weekData = weekView.collectCells(dataID);
     //create a new week in the state -> state.week_[number];
     state[weekLabel] = new Week(weekData, dataID);
+    state[weekLabel].getStartDate(state.inputs.startDate, dataID);
 
     // calculate averages for kg and kcal
     const weekAvgKg = state[weekLabel].getAvgKg();
@@ -213,6 +213,10 @@ function readStorage() {
         storArr.forEach(e => {
             if (e.weekNo) {
                 weekView.restoreWeek(e);
+                if (e.weekNo < state.weekNo) {
+                    //disabling all the previous week but the last
+                    weekView.disableWeek(e.weekNo);
+                }
             }
         })
 
@@ -228,4 +232,7 @@ function readStorage() {
     } else {
         console.log('LocalStorageAbsent')
     }
+    
+    console.log('DEBUG TABLE')
+    console.table(state);
 }

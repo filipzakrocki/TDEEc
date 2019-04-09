@@ -90,7 +90,6 @@ const generateDate = (date, weeksToAdd) => {
     outputDate = new Date(years, months, days + daysToAdd);
 
     return outputDate.toDateString().slice(4);
-
 }
 
 export const disableWeek = (week) => {
@@ -129,7 +128,7 @@ export const restoreWeek = (weekObj) => {
     const weekTemplate = `<div data-id='${weekObj.weekNo}' class="row input-headers week-${weekObj.weekNo}">
                 <div class='col-1'>
                     <div class='text-label'>Week ${weekObj.weekNo}</div>
-                    <div class='text-label weekNumber'>${generateDate(state.inputs.startDate, weekObj.weekNo)}</div>
+                    <div class='text-label weekNumber'>${weekObj.startDate}</div>
                 </div>
                 <div class='col-1'>
                     <div class='text-label'>kg</div>

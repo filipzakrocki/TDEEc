@@ -19,6 +19,5 @@ export const inputElements = {
     weekDays: document.querySelectorAll('.week-day'),
     //weeks cells
     kgCells: document.querySelectorAll('.kg'),
-    kcalCells: document.querySelectorAll('.kcal'),
-    
+    kcalCells: document.querySelectorAll('.kcal'),   
 }

@@ -1,6 +1,6 @@
 export default class Week {
     constructor(cells, weekNo) {
-        this.weekNo = weekNo;
+        this.weekNo = parseInt(weekNo);
         this.cells = cells;
     }
 
@@ -27,11 +27,28 @@ export default class Week {
         this.weeklyLoss = this.avgKg - prevWeight;
         return this.weeklyLoss
     }
-    
+
     calcTdee() {
         const newKcal = (Math.abs(this.weeklyLoss) * 7700) / 7; // 7700 kcal per 1 kg per day
         this.tdee = newKcal + this.avgKcal;
         return this.tdee;
     }
-    
+
+    getStartDate(date, weeksToAdd) {
+
+        let startDate, days, months, years, daysToAdd, outputDate;
+
+        startDate = new Date(date);
+        days = startDate.getDate();
+        months = startDate.getMonth();
+        years = startDate.getYear() + 1900;
+        daysToAdd = (weeksToAdd * 7) - 7;
+
+        outputDate = new Date(years, months, days + daysToAdd);
+        this.startDate = outputDate.toDateString().slice(4);
+
+        return this.startDate;
+    }
+
+
 }
