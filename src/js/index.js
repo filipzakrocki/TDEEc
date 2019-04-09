@@ -111,7 +111,6 @@ inputElements.weeksTable.addEventListener('change', e => {
     let weekNumber = e.target.parentNode.parentNode.parentNode.dataset.id;
     // passing it to update the UI through controller
     weeksController(weekNumber);
-    console.table(state);
 })
 
 window.addEventListener('keypress', e => {
@@ -204,14 +203,10 @@ function readStorage() {
     //assign stored data to variable
     const storage = JSON.parse(localStorage.getItem('state'));
 
-    //restore from storage and set as state
+    //restore from storage and set it as state
     if (storage) {
 
         state = storage;
-        console.log(state);
-
-
-
 
         //update the weeks one by one
         const storArr = Object.keys(state).map(i => state[i]);
@@ -229,7 +224,6 @@ function readStorage() {
         inputElements.startWeight.setAttribute('disabled', true);
 
         console.log('LocalStorageLoaded')
-        console.table(state);
 
     } else {
         console.log('LocalStorageAbsent')

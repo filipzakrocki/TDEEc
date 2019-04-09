@@ -129,7 +129,7 @@ export const restoreWeek = (weekObj) => {
     const weekTemplate = `<div data-id='${weekObj.weekNo}' class="row input-headers week-${weekObj.weekNo}">
                 <div class='col-1'>
                     <div class='text-label'>Week ${weekObj.weekNo}</div>
-                    <div class='text-label weekNumber'>${generateDate(inputElements.startDate.value, weekObj.weekNo)}</div>
+                    <div class='text-label weekNumber'>${generateDate(state.inputs.startDate, weekObj.weekNo)}</div>
                 </div>
                 <div class='col-1'>
                     <div class='text-label'>kg</div>
