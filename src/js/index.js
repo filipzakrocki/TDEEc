@@ -85,7 +85,7 @@ const controlInputs = () => {
 //WEEKS LISTENERS
 inputElements.addWeekBtn.addEventListener('click', e => {
     weekView.disableWeek(state.weekNo);
-    inputView.setDays(state.inputs.startDate);
+    inputView.setDays(inputElements.startDate.value);
     try {
         if (state.inputs.startDate && state.inputs.startWeight) {
             state.weekNo += 1;
@@ -100,6 +100,8 @@ inputElements.addWeekBtn.addEventListener('click', e => {
     } catch (er) {
         alert('Make sure to enter Starting Weight and the Current Date!');
     }
+
+
 
 })
 
@@ -166,11 +168,16 @@ const weeksController = (dataID) => {
     //recalculate and display weeks
     // ONLY IF OBJECT IS CREATED
     
-    // PROBLEM PROBLEM PROBLEM
+    const weeksNeeded = (state.inputs.avgWeight - state.inputs.weightGoal) / state.inputs.weeklyLoss;
+    state.inputs.weeksNeeded = weeksNeeded;
+    
+    
+    const totalCaloriesNeeded = state.inputs.tdee - state.inputs.dailyKcalDeficit;
+    
+    state.inputs.totalTDEE = totalCaloriesNeeded;
 
-
-    inputView.updateDailyKcal(state.inputs.totalCaloriesNeeded());
-    inputView.setWeeksNeeded(state.inputs.getWeeksNeeded());
+    inputView.updateDailyKcal(totalCaloriesNeeded);
+    inputView.setWeeksNeeded(weeksNeeded);
 
 
 
@@ -193,18 +200,18 @@ function persistData() {
 //LOAD
 
 function readStorage() {
-    
+
     //assign stored data to variable
     const storage = JSON.parse(localStorage.getItem('state'));
 
     //restore from storage and set as state
     if (storage) {
-        const init = new Input(storage.inputs);
+
         state = storage;
         console.log(state);
-        //update the inputs
-        
-        inputView.restoreInput(state.inputs);
+
+
+
 
         //update the weeks one by one
         const storArr = Object.keys(state).map(i => state[i]);
@@ -214,11 +221,15 @@ function readStorage() {
             }
         })
 
+        //update the inputs
+        inputView.restoreInput(state.inputs);
+
         //disabling inputs
         inputElements.startDate.setAttribute('disabled', true);
         inputElements.startWeight.setAttribute('disabled', true);
 
         console.log('LocalStorageLoaded')
+        console.table(state);
 
     } else {
         console.log('LocalStorageAbsent')
