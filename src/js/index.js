@@ -45,6 +45,16 @@ window.addEventListener('load', () => {
 
 })
 
+//reset button listener
+inputElements.resetbtn.addEventListener('click', e => {
+    const decision = confirm('Pressing "OK" will result in clearing ALL data in the window');
+    if (decision) {
+        localStorage.clear();
+        location.reload();
+    }
+})
+
+
 
 // INITIAL INPUTS EVENT LISTENER
 
@@ -192,7 +202,6 @@ const weeksController = (dataID) => {
 //SAVE
 
 function persistData() {
-    console.log('INPUTS SAVED');
     localStorage.setItem('state', JSON.stringify(state));
 }
 
@@ -222,6 +231,8 @@ function readStorage() {
 
         //update the inputs
         inputView.restoreInput(state.inputs);
+        //and the header days
+        inputView.setDays(state.inputs.startDate);
 
         //disabling inputs
         inputElements.startDate.setAttribute('disabled', true);
@@ -232,7 +243,4 @@ function readStorage() {
     } else {
         console.log('LocalStorageAbsent')
     }
-    
-    console.log('DEBUG TABLE')
-    console.table(state);
 }

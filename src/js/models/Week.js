@@ -9,7 +9,6 @@ export default class Week {
     getAvgKg() {
         let sum = 0;
         this.cells.kg.forEach(e => sum += e);
-        console.log(this.cells.kg);
         let avg = sum / this.cells.kg.length;
         this.avgKg = avg;
         return this.avgKg;

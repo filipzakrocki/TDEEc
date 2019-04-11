@@ -5,6 +5,7 @@ export const inputElements = {
     startWeight: document.querySelector('.weight-initial-input'),
     weightGoal: document.querySelector('.goal-initial-input'),
     weeklyLoss: document.querySelector('.loss-initial-input'),
+    resetbtn:document.querySelector('#reset'),
     //right column of inputs, mostly disabled
     currentDate: document.querySelector('.date-current-input'),
     weeksNeeded: document.querySelector('.weeks-needed'),
