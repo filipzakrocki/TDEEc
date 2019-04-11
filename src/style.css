@@ -16,7 +16,6 @@
 
 html {
     box-sizing: border-box;
-    font-size: 100%;
     height: 100%;
 }
 
@@ -27,17 +26,14 @@ body {
     color: #655A56;
 }
 
-.inputs-wrapper {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000;
-    box-shadow: 5px 5px 15px 5px #000000;
-    padding-bottom: 5px;
+.row {
+    margin: 0;
 }
 
 
 /* INPUTS - TOP SECTION */
 #inputs {
     padding: 10px 0 0 0px;
-    font-size: 1vw;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -52,15 +48,17 @@ body {
 
 h4.inputs-title {
     padding-top: 10px;
+    font-size: medium;
 }
 
 #inputs td {
+    font-size: 1vw;
     padding: 5px 10px;
     text-align: left;
 }
 
 
-#inputs.col-6 {
+div.col-6 {
     text-align: center;
 }
 
@@ -82,9 +80,8 @@ div.col-1 {
 }
 
 #data {
-    font-size: 1vw;
+
     position: static;
-    /*    padding: 24% 0;*/
     width: 100%;
     color: #655A56;
     text-align: center;
@@ -98,6 +95,14 @@ input[type='number'] {
     text-align: center;
     font-size: 1.2vw;
     margin: 0;
+    border: 0 0 .3px;
+}
+
+input[type='date'] {
+    width: 70%;
+    text-align: center;
+    font-size: 1.2vw;
+    margin: 0;
     padding: 0;
 }
 
@@ -108,6 +113,7 @@ input[type='number'] {
 
 div.text-label {
     vertical-align: middle;
+
 }
 
 div.weekNumber {
@@ -123,10 +129,55 @@ div.weekNumber {
     background-color: greenyellow;
     border: 0px;
     box-shadow: 1px 1px 10px black;
+    font-size: small;
 }
 
 button#reset {
     color: white;
     background-color: red;
     border: none;
+}
+
+.input-headers {
+    font-size: 1.8vw;
+}
+
+@media screen and (max-width: 600px) {
+    #inputs td {
+        font-size: 8px;
+    }
+
+    div.text-label,
+    div.col-1 {
+        font-size: 7px;
+    }
+
+    div.weekNumber {
+        font-size: 7px;
+    }
+
+    .add-week-btn {
+        margin: 10px 0px 10px;
+        color: #655A56;
+        font-weight: 500;
+        padding: 3px 50px;
+        border-radius: 5px;
+        background-color: greenyellow;
+        border: 0px;
+        box-shadow: 1px 1px 10px black;
+        font-size: small;
+    }
+    
+    .week-num {
+        display: none;
+    }
+    
+    div.col-1.table-header {
+        font-size: 8px;
+    }
+    
+    input.kg,
+    input.kcal {
+        font-size: 6px;
+    }
 }

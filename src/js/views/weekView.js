@@ -5,7 +5,7 @@ import {
 export const addWeek = (weekID) => {
     const weekTemplate = `<div data-id='${weekID}' class="row input-headers week-${weekID}">
                 <div class='col-1'>
-                    <div class='text-label'>Week ${weekID}</div>
+                    <div class='text-label week-num'>Week ${weekID}</div>
                     <div class='text-label weekNumber'>${generateDate(inputElements.startDate.value, weekID)}</div>
                 </div>
                 <div class='col-1'>
@@ -127,7 +127,7 @@ export const updateTdee = (week, tdee) => {
 export const restoreWeek = (weekObj) => {
     const weekTemplate = `<div data-id='${weekObj.weekNo}' class="row input-headers week-${weekObj.weekNo}">
                 <div class='col-1'>
-                    <div class='text-label'>Week ${weekObj.weekNo}</div>
+                    <div class='text-label week-num'>Week ${weekObj.weekNo}</div>
                     <div class='text-label weekNumber'>${weekObj.startDate}</div>
                 </div>
                 <div class='col-1'>
