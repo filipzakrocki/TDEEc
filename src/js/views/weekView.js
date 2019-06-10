@@ -79,7 +79,7 @@ export const collectCells = (week) => {
 }
 
 const generateDate = (date, weeksToAdd) => {
-    let startDate, days, months, years, daysToAdd, outputDate;
+    let startDate, days, months, years, daysToAdd, outputDate, formattedDate;
 
     startDate = new Date(date);
     days = startDate.getDate();
@@ -88,8 +88,9 @@ const generateDate = (date, weeksToAdd) => {
     daysToAdd = (weeksToAdd * 7) - 7;
 
     outputDate = new Date(years, months, days + daysToAdd);
+    formattedDate = outputDate.toDateString().slice(4);
 
-    return outputDate.toDateString().slice(4);
+    return formattedDate;
 }
 
 export const disableWeek = (week) => {

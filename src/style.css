@@ -136,6 +136,7 @@ button#reset {
     color: white;
     background-color: red;
     border: none;
+    padding: 0 3px;
 }
 
 .input-headers {

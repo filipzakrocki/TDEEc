@@ -1,14 +1,14 @@
 export default class Inputs {
-    constructor(input) {
-        this.startDate = input.startDate;
-        this.startWeight = input.startWeight;
-        this.weightGoal = input.weightGoal;
-        this.weeklyLoss = input.weeklyLoss;
-        this.avgWeight = input.startWeight;
+    constructor(object) {
+        this.startDate = object.startDate;
+        this.startWeight = object.startWeight;
+        this.weightGoal = object.weightGoal;
+        this.weeklyLoss = object.weeklyLoss;
+        this.avgWeight = object.startWeight;
     }
 
     getWeeksNeeded() {
-        //NEEDS TO BE AN AVERAGE WEIGHT
+
         if (this.weeklyLoss) {
             const difference = (this.avgWeight - this.weightGoal);
             this.weeksNeeded = (difference / this.weeklyLoss);
